@@ -6,6 +6,7 @@ using TMPro;
 
 public class Snake : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
     [SerializeField] ScoreSystem scoreSystem;
     [SerializeField] Points points;
     [SerializeField] TextMeshProUGUI score;
@@ -26,7 +27,7 @@ public class Snake : MonoBehaviour
     void Start() {
         snakeMovePositionList = new List<Vector2Int>();
         snakeBodySize = 0;
-        gridMoveMaxTimer = .5f;
+        gridMoveMaxTimer = .3f;
         gridMoveTime = gridMoveMaxTimer;
         gridMoveDirection = new Vector2Int(0, 1);
     }
@@ -107,6 +108,7 @@ public class Snake : MonoBehaviour
             snakeBodySize++;
             score.text = "Score: "+snakeBodySize;
             particle.Play();
+            audioSource.Play();
             points.SpawnApple();
         }
         else if (collision.tag == "Tail") {

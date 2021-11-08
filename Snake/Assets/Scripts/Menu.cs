@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+
     public void StartNow() {
+        audioSource.Play();
         SceneManager.LoadScene("SnakeGame");
     }
     public void ResetGame() {
+        audioSource.Play();
         PlayerPrefs.DeleteAll();
     }
-    public void ExitGame() { 
-
+    public void ExitGame() {
+        audioSource.Play();
         Application.Quit();
     }
-
 }
